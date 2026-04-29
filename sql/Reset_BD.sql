@@ -1,0 +1,45 @@
+USE gestao_escolar;
+
+SET FOREIGN_KEY_CHECKS = 0;
+
+TRUNCATE TABLE tb_ponto_eletronico;
+TRUNCATE TABLE tb_eventos_folha;
+TRUNCATE TABLE tb_folha_pagamento;
+TRUNCATE TABLE tb_func_beneficio;
+TRUNCATE TABLE tb_beneficio;
+TRUNCATE TABLE tb_fluxo_caixa;
+TRUNCATE TABLE tb_categorias_financeiras;
+TRUNCATE TABLE tb_mensalidades;
+TRUNCATE TABLE tb_contratos_educacionais;
+TRUNCATE TABLE tb_descontos;
+TRUNCATE TABLE tb_forma_pagamento;
+TRUNCATE TABLE tb_faltas;
+TRUNCATE TABLE tb_notas;
+TRUNCATE TABLE tb_avaliacoes;
+TRUNCATE TABLE tb_matricula_componentes;
+TRUNCATE TABLE tb_matriculas;
+TRUNCATE TABLE tb_turmas;
+TRUNCATE TABLE tb_periodos_letivos;
+TRUNCATE TABLE tb_responsaveis_alunos;
+TRUNCATE TABLE tb_responsaveis;
+TRUNCATE TABLE tb_grade_curricular;
+TRUNCATE TABLE tb_grade_horaria;
+TRUNCATE TABLE tb_alunos;
+TRUNCATE TABLE tb_unidades_cursos;
+TRUNCATE TABLE tb_disciplina;
+TRUNCATE TABLE tb_cursos;
+TRUNCATE TABLE tb_professor;
+TRUNCATE TABLE tb_funcionarios;
+TRUNCATE TABLE tb_cargos;
+TRUNCATE TABLE tb_departamento;
+TRUNCATE TABLE tb_turnos;
+TRUNCATE TABLE tb_salas;
+TRUNCATE TABLE tb_unidades;
+TRUNCATE TABLE tb_instituicao;
+TRUNCATE TABLE tb_pessoa_endereco;
+TRUNCATE TABLE tb_email;
+TRUNCATE TABLE tb_telefone;
+TRUNCATE TABLE tb_pessoa;
+TRUNCATE TABLE tb_endereco;
+
+SET FOREIGN_KEY_CHECKS = 1;

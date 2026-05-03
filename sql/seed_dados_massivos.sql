@@ -1,16 +1,16 @@
--- ============================================================
+
 -- SEED DE DADOS MASSIVOS - Sistema de Gestão Escolar
 -- Gerado para testes de performance e funcionalidade
--- ============================================================
+
 
 USE gestao_escolar;
 
 SET FOREIGN_KEY_CHECKS = 0;
 SET SQL_MODE = 'NO_AUTO_VALUE_ON_ZERO';
 
--- ============================================================
+
 -- MÓDULO: ENDEREÇOS (50 registros)
--- ============================================================
+
 
 INSERT INTO tb_endereco (cep, estado, cidade, bairro, rua, numero, complemento) VALUES
 ('01310-100', 'SP', 'São Paulo', 'Bela Vista', 'Av. Paulista', '1000', 'Bloco A'),
@@ -65,9 +65,9 @@ INSERT INTO tb_endereco (cep, estado, cidade, bairro, rua, numero, complemento) 
 ('69900-010', 'AC', 'Rio Branco', 'Centro', 'Av. Getúlio Vargas', '300', NULL);
 
 
--- ============================================================
+
 -- MÓDULO: PESSOAS (120 registros)
--- ============================================================
+
 
 INSERT INTO tb_pessoa (cpf, nome, sobrenome, dt_nascimento, sexo) VALUES
 -- Funcionários / Professores (1-40)
@@ -185,9 +185,9 @@ INSERT INTO tb_pessoa (cpf, nome, sobrenome, dt_nascimento, sexo) VALUES
 ('20011122210', 'Elza', 'Mendes Alves', '1977-04-20', 'Feminino');
 
 
--- ============================================================
+-- 
 -- MÓDULO: TELEFONES
--- ============================================================
+
 
 INSERT INTO tb_telefone (fk_pessoa, numero_telefone, tipo_telefone) VALUES
 (1, '(11) 98765-4321', 'Celular'), (1, '(11) 3456-7890', 'Fixo'),
@@ -215,9 +215,9 @@ INSERT INTO tb_telefone (fk_pessoa, numero_telefone, tipo_telefone) VALUES
 (109, '(11) 99109-0109', 'Celular'), (110, '(11) 99110-0110', 'Celular');
 
 
--- ============================================================
+
 -- MÓDULO: E-MAILS
--- ============================================================
+
 
 INSERT INTO tb_email (fk_pessoa, email, tipo_email) VALUES
 (1, 'carlos.andrade@escola.edu.br', 'Institucional'), (1, 'carlos.andrade@gmail.com', 'Pessoal'),
@@ -252,9 +252,9 @@ INSERT INTO tb_email (fk_pessoa, email, tipo_email) VALUES
 (50, 'alice.cruz@aluno.escola.edu.br', 'Institucional');
 
 
--- ============================================================
+
 -- MÓDULO: PESSOA ENDEREÇO
--- ============================================================
+
 
 INSERT INTO tb_pessoa_endereco (fk_pessoa, fk_endereco, principal) VALUES
 (1, 1, true), (2, 2, true), (3, 3, true), (4, 4, true), (5, 5, true),
@@ -275,9 +275,9 @@ INSERT INTO tb_pessoa_endereco (fk_pessoa, fk_endereco, principal) VALUES
 (106, 26, true), (107, 27, true), (108, 28, true), (109, 29, true), (110, 30, true);
 
 
--- ============================================================
+
 -- MÓDULO: INSTITUIÇÃO E UNIDADES
--- ============================================================
+
 
 INSERT INTO tb_instituicao (tipo_instituicao, tipo_categoria_adm) VALUES
 ('Escola', 'Privada'),
@@ -297,9 +297,8 @@ INSERT INTO tb_unidades (fk_instituicao, fk_endereco, nome_unidade, cnpj_unidade
 (3, 54, 'EMEF Prof. João Pessoa', '11.222.333/0001-01', '(19) 3100-0001', 'emef.joaopessoa@campinas.sp.gov.br', true);
 
 
--- ============================================================
 -- MÓDULO: SALAS
--- ============================================================
+
 
 INSERT INTO tb_salas (fk_unidade, nome_sala, capacidade_sala) VALUES
 (1, 'Sala 101', 35), (1, 'Sala 102', 35), (1, 'Sala 103', 30),
@@ -312,9 +311,9 @@ INSERT INTO tb_salas (fk_unidade, nome_sala, capacidade_sala) VALUES
 (4, 'Sala Amarela', 30), (4, 'Sala Azul', 30), (4, 'Sala Verde', 30);
 
 
--- ============================================================
+
 -- MÓDULO: TURNOS
--- ============================================================
+
 
 INSERT INTO tb_turnos (fk_unidade, nome_turno, hora_inicio, hora_fim) VALUES
 (1, 'Manhã', '07:00:00', '12:00:00'),
@@ -329,9 +328,8 @@ INSERT INTO tb_turnos (fk_unidade, nome_turno, hora_inicio, hora_fim) VALUES
 (4, 'Tarde', '13:00:00', '17:30:00');
 
 
--- ============================================================
+
 -- MÓDULO: DEPARTAMENTOS
--- ============================================================
 
 INSERT INTO tb_departamento (fk_unidade, nome_depto, responsavel, sigla, ativo) VALUES
 (1, 'Direção Geral', 'Carlos Andrade Silva', 'DIR', true),
@@ -349,9 +347,9 @@ INSERT INTO tb_departamento (fk_unidade, nome_depto, responsavel, sigla, ativo) 
 (4, 'Coordenação', 'Beatriz Marques Torres', 'COORD', true);
 
 
--- ============================================================
+
 -- MÓDULO: CARGOS
--- ============================================================
+
 
 INSERT INTO tb_cargos (fk_depto, nome_cargo, descricao, salario_base, carga_horaria, nivel_cargo, ativo) VALUES
 (1, 'Diretor', 'Responsável pela gestão geral da unidade', 12000.00, 44, 'Executivo', true),
@@ -372,9 +370,9 @@ INSERT INTO tb_cargos (fk_depto, nome_cargo, descricao, salario_base, carga_hora
 (5, 'Auxiliar Administrativo', 'Apoio administrativo geral', 2200.00, 40, 'Operacional', true);
 
 
--- ============================================================
+
 -- MÓDULO: FUNCIONÁRIOS (pessoas 1-40)
--- ============================================================
+
 
 INSERT INTO tb_funcionarios (fk_pessoa, fk_cargo, fk_unidade, data_admissao, data_demissao, salario, status_funcionario, ctps) VALUES
 (1, 1, 1, '2010-03-01', NULL, 13500.00, 'Ativo', 'CTPS-001-SP'),
@@ -404,9 +402,9 @@ INSERT INTO tb_funcionarios (fk_pessoa, fk_cargo, fk_unidade, data_admissao, dat
 (25, 9, 1, '2022-02-01', NULL, 10800.00, 'Ativo', 'CTPS-025-SP');
 
 
--- ============================================================
+
 -- MÓDULO: PROFESSORES (subset de funcionários)
--- ============================================================
+
 
 INSERT INTO tb_professor (fk_pessoa, registro_magisteria, nivel_academico, disponibilidade, status_docente) VALUES
 (3, 'REG-MAG-00003', 'Graduado', 'Manhã', 'Ativo'),
@@ -431,9 +429,9 @@ INSERT INTO tb_professor (fk_pessoa, registro_magisteria, nivel_academico, dispo
 (25, 'REG-MAG-00025', 'Doutorado', 'Manhã', 'Ativo');
 
 
--- ============================================================
+
 -- MÓDULO: CURSOS
--- ============================================================
+
 
 INSERT INTO tb_cursos (fk_instituicao, nome_curso) VALUES
 (1, 'Ensino Fundamental I'),
@@ -449,9 +447,8 @@ INSERT INTO tb_cursos (fk_instituicao, nome_curso) VALUES
 (4, 'Ensino Fundamental II');
 
 
--- ============================================================
 -- MÓDULO: DISCIPLINAS
--- ============================================================
+
 
 INSERT INTO tb_disciplina (nome_disciplina, sigla, carga_horaria_atual, tipo_componente, ativo) VALUES
 ('Matemática', 'MAT', 80, 'Obrigatoria', true),
@@ -481,9 +478,9 @@ INSERT INTO tb_disciplina (nome_disciplina, sigla, carga_horaria_atual, tipo_com
 ('Robótica Educacional', 'ROB', 40, 'ExtraCurricular', true);
 
 
--- ============================================================
+
 -- MÓDULO: UNIDADES_CURSOS (vincula curso à unidade com coordenador)
--- ============================================================
+
 
 INSERT INTO tb_unidades_cursos (fk_curso, fk_unidade, fk_coordenador, ativo) VALUES
 (1, 1, 8, true),
@@ -499,9 +496,9 @@ INSERT INTO tb_unidades_cursos (fk_curso, fk_unidade, fk_coordenador, ativo) VAL
 (11, 4, 22, true);
 
 
--- ============================================================
+
 -- MÓDULO: ALUNOS (pessoas 41-90)
--- ============================================================
+
 
 INSERT INTO tb_alunos (fk_pessoa, fk_unidade, ra_aluno, observacao) VALUES
 (41, 1, 'RA2024001', NULL),
@@ -556,9 +553,9 @@ INSERT INTO tb_alunos (fk_pessoa, fk_unidade, ra_aluno, observacao) VALUES
 (90, 4, 'RA2024050', NULL);
 
 
--- ============================================================
+
 -- MÓDULO: GRADE HORÁRIA
--- ============================================================
+
 
 INSERT INTO tb_grade_horaria (fk_sala, fk_disciplina, fk_professor, dias_semana, hora_inicio, hora_fim) VALUES
 (1, 1, 3, 'Seg', '07:00:00', '08:40:00'),
@@ -585,9 +582,9 @@ INSERT INTO tb_grade_horaria (fk_sala, fk_disciplina, fk_professor, dias_semana,
 (19, 2, 22, 'Ter', '08:50:00', '10:30:00');
 
 
--- ============================================================
+
 -- MÓDULO: GRADE CURRICULAR
--- ============================================================
+
 
 INSERT INTO tb_grade_curricular (fk_curso, fk_disciplina, periodo_grade, obrigatoria) VALUES
 -- Ensino Fundamental I (curso 1)
@@ -606,9 +603,8 @@ INSERT INTO tb_grade_curricular (fk_curso, fk_disciplina, periodo_grade, obrigat
 (7, 17, 1, true), (7, 18, 1, true), (7, 19, 1, true), (7, 23, 2, true), (7, 24, 2, true);
 
 
--- ============================================================
 -- MÓDULO: RESPONSÁVEIS (pessoas 101-120)
--- ============================================================
+
 
 INSERT INTO tb_responsaveis (fk_pessoa, profissao, renda_mensal) VALUES
 (101, 'Engenheiro Civil', 12000.00),
@@ -633,9 +629,7 @@ INSERT INTO tb_responsaveis (fk_pessoa, profissao, renda_mensal) VALUES
 (120, 'Doméstica', 1800.00);
 
 
--- ============================================================
 -- MÓDULO: RESPONSÁVEIS_ALUNOS
--- ============================================================
 
 INSERT INTO tb_responsaveis_alunos (fk_aluno, fk_responsavel, parentesco, financeira) VALUES
 (41, 1, 'Pai', true), (41, 2, 'Mãe', false),
@@ -660,9 +654,7 @@ INSERT INTO tb_responsaveis_alunos (fk_aluno, fk_responsavel, parentesco, financ
 (60, 4, 'Mãe', true);
 
 
--- ============================================================
 -- MÓDULO: PERÍODOS LETIVOS
--- ============================================================
 
 INSERT INTO tb_periodos_letivos (fk_unidade, ano_referencia, identificador_periodo, dt_inicio, dt_fim, status_periodo) VALUES
 (1, 2023, '2023-1', '2023-02-06', '2023-06-30', 'Fechado'),
@@ -685,9 +677,7 @@ INSERT INTO tb_periodos_letivos (fk_unidade, ano_referencia, identificador_perio
 (4, 2026, '2026-1', '2026-02-02', '2026-06-30', 'Aberto');
 
 
--- ============================================================
 -- MÓDULO: TURMAS
--- ============================================================
 
 INSERT INTO tb_turmas (fk_periodo_letivo, fk_curso, fk_unidade, fk_sala, nome_turma, capacidade_turma, status_turma) VALUES
 -- Unidade 1 - 2026-1 (periodo 7)
@@ -712,9 +702,7 @@ INSERT INTO tb_turmas (fk_periodo_letivo, fk_curso, fk_unidade, fk_sala, nome_tu
 (5, 3, 1, 4, '1º Médio A 2025 - Tarde', 40, 'Encerrada');
 
 
--- ============================================================
 -- MÓDULO: MATRÍCULAS
--- ============================================================
 
 INSERT INTO tb_matriculas (fk_pessoa, fk_unidade, fk_turma, data_matricula, situacao) VALUES
 -- Turma 1 (5ºAno A) - alunos 41-50
@@ -761,9 +749,7 @@ INSERT INTO tb_matriculas (fk_pessoa, fk_unidade, fk_turma, data_matricula, situ
 (82, 1, 14, '2025-01-24', 'Abandono');
 
 
--- ============================================================
 -- MÓDULO: MATRÍCULA COMPONENTES
--- ============================================================
 
 INSERT INTO tb_matricula_componentes (fk_disciplina, fk_turma, num_matricula, situacao_comp, situacao_vinculo) VALUES
 -- Turma 1 - alunos matriculados em disciplinas
@@ -797,9 +783,7 @@ INSERT INTO tb_matricula_componentes (fk_disciplina, fk_turma, num_matricula, si
 (19, 9, 23, 'Confirmado', 'Regular');
 
 
--- ============================================================
 -- MÓDULO: AVALIAÇÕES
--- ============================================================
 
 INSERT INTO tb_avaliacoes (fk_turma, fk_disciplina, descricao, data_prevista, peso_nota) VALUES
 (1, 1, 'Prova Bimestral 1 - Matemática', '2026-03-20', 4.00),
@@ -821,9 +805,7 @@ INSERT INTO tb_avaliacoes (fk_turma, fk_disciplina, descricao, data_prevista, pe
 (9, 19, 'Prova 1 - Intro Comp.', '2026-03-26', 5.00);
 
 
--- ============================================================
 -- MÓDULO: NOTAS
--- ============================================================
 
 INSERT INTO tb_notas (fk_vinculo, fk_avaliacao, valor_notas) VALUES
 -- Aluno 1 (vínculo 1,2,3,4) - Turma 1 Mat
@@ -857,9 +839,7 @@ INSERT INTO tb_notas (fk_vinculo, fk_avaliacao, valor_notas) VALUES
 (26, 17, 9.50);
 
 
--- ============================================================
 -- MÓDULO: FALTAS
--- ============================================================
 
 INSERT INTO tb_faltas (fk_vinculo, data_falta, quantidade, justificada) VALUES
 (1, '2026-03-05', 1, false),
@@ -876,9 +856,7 @@ INSERT INTO tb_faltas (fk_vinculo, data_falta, quantidade, justificada) VALUES
 (24, '2026-03-17', 2, false);
 
 
--- ============================================================
 -- MÓDULO: FORMAS DE PAGAMENTO
--- ============================================================
 
 INSERT INTO tb_forma_pagamento (tipo_pagamento, qtd_dias_receber, ativo) VALUES
 ('Dinheiro', 0, true),
@@ -888,9 +866,7 @@ INSERT INTO tb_forma_pagamento (tipo_pagamento, qtd_dias_receber, ativo) VALUES
 ('Cartão de Débito', 2, true);
 
 
--- ============================================================
 -- MÓDULO: DESCONTOS
--- ============================================================
 
 INSERT INTO tb_descontos (fk_instituicao, nome_desconto, tipo_desconto, valor_desconto, data_inicio, data_fim, ativo) VALUES
 (1, 'Desconto Irmão', 'Porcentagem', 10.00, '2024-01-01', '2026-12-31', true),
@@ -902,9 +878,7 @@ INSERT INTO tb_descontos (fk_instituicao, nome_desconto, tipo_desconto, valor_de
 (1, 'Promoção 2024', 'Porcentagem', 15.00, '2024-01-01', '2024-12-31', false);
 
 
--- ============================================================
 -- MÓDULO: CONTRATOS EDUCACIONAIS
--- ============================================================
 
 INSERT INTO tb_contratos_educacionais (fk_num_matricula, fk_unidade, fk_desconto, valor_total, qtd_parcelas, dia_vencimento, data_assinatura, status_contrato) VALUES
 (1, 1, NULL, 11400.00, 12, 10, '2026-01-20', 'Ativo'),
@@ -923,9 +897,7 @@ INSERT INTO tb_contratos_educacionais (fk_num_matricula, fk_unidade, fk_desconto
 (27, 4, NULL, 7200.00, 12, 10, '2026-01-20', 'Ativo');
 
 
--- ============================================================
 -- MÓDULO: MENSALIDADES (3 meses para contratos ativos)
--- ============================================================
 
 INSERT INTO tb_mensalidades (fk_aluno, fk_contrato, fk_unidade, num_parcela, valor_bruto, valor_desconto_aplicado, valor_liquido, data_vencimento, status_pagamento) VALUES
 -- Aluno 41 - Contrato 1
@@ -965,9 +937,7 @@ INSERT INTO tb_mensalidades (fk_aluno, fk_contrato, fk_unidade, num_parcela, val
 (77, 14, 4, 2, 600.00, 0.00, 600.00, '2026-03-10', 'Pendente');
 
 
--- ============================================================
 -- MÓDULO: CATEGORIAS FINANCEIRAS
--- ============================================================
 
 INSERT INTO tb_categorias_financeiras (fk_instituicao, nome_categoria, tipo_movimentacao) VALUES
 (1, 'Mensalidades', 'Receita'),
@@ -986,9 +956,7 @@ INSERT INTO tb_categorias_financeiras (fk_instituicao, nome_categoria, tipo_movi
 (3, 'Salários', 'Despesa');
 
 
--- ============================================================
 -- MÓDULO: FLUXO DE CAIXA
--- ============================================================
 
 INSERT INTO tb_fluxo_caixa (fk_instituicao, fk_unidade, fk_categoria, tipo_movimento, valor, data_movimento, saldo_momento) VALUES
 -- Janeiro 2026
@@ -1018,9 +986,7 @@ INSERT INTO tb_fluxo_caixa (fk_instituicao, fk_unidade, fk_categoria, tipo_movim
 (2, 3, 12, 'Saída', 120000.00, '2026-02-28 17:00:00', -180600.00);
 
 
--- ============================================================
 -- MÓDULO: BENEFÍCIOS
--- ============================================================
 
 INSERT INTO tb_beneficio (fk_instituicao, nome_beneficio, tipo_evento, tipo_calculo, valor_evento) VALUES
 (1, 'Vale Refeição', 'Provento', 'Valor fixo', 700.00),
@@ -1035,9 +1001,7 @@ INSERT INTO tb_beneficio (fk_instituicao, nome_beneficio, tipo_evento, tipo_calc
 (2, 'INSS', 'Desconto', 'Porcentagem', 11.00);
 
 
--- ============================================================
 -- MÓDULO: FUNCIONÁRIO BENEFÍCIO
--- ============================================================
 
 INSERT INTO tb_func_beneficio (fk_funcionario, fk_beneficio, data_adesao, valor_diferente) VALUES
 (1, 1, '2010-03-01', NULL), (1, 2, '2010-03-01', NULL), (1, 3, '2010-03-01', NULL),
@@ -1050,9 +1014,7 @@ INSERT INTO tb_func_beneficio (fk_funcionario, fk_beneficio, data_adesao, valor_
 (18, 7, '2014-04-15', NULL), (18, 8, '2014-04-15', NULL), (18, 9, '2014-04-15', NULL);
 
 
--- ============================================================
 -- MÓDULO: FOLHA DE PAGAMENTO (Fev e Mar 2026)
--- ============================================================
 
 INSERT INTO tb_folha_pagamento (fk_funcionario, fk_unidade, mes_referencia, ano_referencia, salario_base_atual, total_proventos, total_descontos, valor_liquido, status_folha) VALUES
 -- Fevereiro 2026
@@ -1076,9 +1038,7 @@ INSERT INTO tb_folha_pagamento (fk_funcionario, fk_unidade, mes_referencia, ano_
 (3, 1, 4, 2026, 5200.00, 6220.00, 1238.00, 4982.00, 'Aberto');
 
 
--- ============================================================
 -- MÓDULO: EVENTOS DA FOLHA
--- ============================================================
 
 INSERT INTO tb_eventos_folha (fk_folha, fk_beneficio, descricao_evento, tipo_evento, valor_evento) VALUES
 -- Folha 1 (Diretor, Fev)
@@ -1101,9 +1061,7 @@ INSERT INTO tb_eventos_folha (fk_folha, fk_beneficio, descricao_evento, tipo_eve
 (3, NULL, 'IRRF (7,5%)', 'Desconto', 416.00);
 
 
--- ============================================================
 -- MÓDULO: PONTO ELETRÔNICO (Abril 2026)
--- ============================================================
 
 INSERT INTO tb_ponto_eletronico (fk_funcionario, data_registro, hora_entrada, saida_intervalo, volta_intervalo, hora_saida, total_hr_dias, status_ponto) VALUES
 -- Funcionário 1 (Diretor)
@@ -1131,9 +1089,8 @@ INSERT INTO tb_ponto_eletronico (fk_funcionario, data_registro, hora_entrada, sa
 
 SET FOREIGN_KEY_CHECKS = 1;
 
--- ============================================================
 -- RESUMO DOS DADOS INSERIDOS
--- ============================================================
+
 -- tb_endereco .............. 54 registros
 -- tb_pessoa ............... 120 registros
 -- tb_telefone ..............  46 registros
@@ -1173,6 +1130,5 @@ SET FOREIGN_KEY_CHECKS = 1;
 -- tb_folha_pagamento .......  16 registros
 -- tb_eventos_folha .........  15 registros
 -- tb_ponto_eletronico ......  19 registros
--- ============================================================
+
 -- TOTAL APROXIMADO: ~1.000+ registros distribuídos em 38 tabelas
--- ============================================================

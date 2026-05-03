@@ -28,11 +28,38 @@ START TRANSACTION;
         (42, NULL, 1, 5,
          5858.00, 0.00, 5858.00,
          '2026-05-10', 'Pendente');
+         SELECT 
+			m.pk_mensalidade,
+			m.fk_aluno,
+			CONCAT(p.nome, ' ', p.sobrenome) AS aluno,
+			m.num_parcela,
+			m.valor_liquido,
+			m.status_pagamento
+		FROM tb_mensalidades m
+		JOIN tb_alunos a  ON m.fk_aluno = a.fk_pessoa
+		JOIN tb_pessoa p  ON a.fk_pessoa = p.pk_pessoa
+		WHERE m.fk_aluno = 42
+		ORDER BY m.pk_mensalidade DESC
+		LIMIT 5;
+
 
 COMMIT;
 
 ROLLBACK;
 -- Verificação APÓS o COMMIT
+SELECT 
+    m.pk_mensalidade,
+    m.fk_aluno,
+    CONCAT(p.nome, ' ', p.sobrenome) AS aluno,
+    m.num_parcela,
+    m.valor_liquido,
+    m.status_pagamento
+FROM tb_mensalidades m
+JOIN tb_alunos a  ON m.fk_aluno = a.fk_pessoa
+JOIN tb_pessoa p  ON a.fk_pessoa = p.pk_pessoa
+WHERE m.fk_aluno = 42
+ORDER BY m.pk_mensalidade DESC
+LIMIT 5;
 
 -- ✔ Conclusão Cenário 2:
 --   O COMMIT confirmou e persistiu a operação.

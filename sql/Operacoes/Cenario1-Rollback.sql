@@ -27,8 +27,14 @@ START TRANSACTION;
          data_vencimento, status_pagamento)
     VALUES
         (41, NULL, 1, 99,
-         1500.00, 0.00, 1500.00,
+         9999.00, 0.00, 9999.00,
          '2026-05-10', 'Pendente');
+         
+         SELECT pk_mensalidade, fk_aluno, num_parcela, valor_liquido, status_pagamento
+			FROM tb_mensalidades
+		    WHERE fk_aluno = 41
+			ORDER BY pk_mensalidade DESC
+			LIMIT 5;
 
     -- Simulando erro de negócio detectado pelo sistema
     -- (ex: parcela duplicada, contrato inválido, regra violada)
@@ -37,6 +43,11 @@ START TRANSACTION;
 ROLLBACK;
 
 -- Verificação APÓS o ROLLBACK
+SELECT pk_mensalidade, fk_aluno, num_parcela, valor_liquido, status_pagamento
+FROM tb_mensalidades
+WHERE fk_aluno = 41
+ORDER BY pk_mensalidade DESC
+LIMIT 5;
 -- Resultado esperado: O registro inserido NÃO deve existir
 -- (a tabela deve estar idêntica ao estado anterior)
 

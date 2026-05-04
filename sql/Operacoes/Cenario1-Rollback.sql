@@ -33,6 +33,6 @@ FROM tb_mensalidades
 WHERE fk_aluno = 41;
 -- Resultado esperado: A tabela deve estar idêntica ao estado anterior
 
--- ✔ Conclusão Cenário 1:
+--   Conclusão Cenário 1:
 --   O ROLLBACK garantiu que a operação foi completamente desfeita.
 --   A atomicidade do banco foi preservada — nenhum dado parcial ficou gravado.

@@ -7,7 +7,7 @@ USE gestao_escolar;
 -- Verificação ANTES da transação
 SELECT COUNT(*) 
 FROM tb_mensalidades 
-WHERE fk_aluno = 41 AND num_parcela = 99;
+WHERE fk_aluno = 41;
 
 START TRANSACTION;
 
@@ -22,7 +22,7 @@ VALUES
 
 SELECT COUNT(*) 
 FROM tb_mensalidades 
-WHERE fk_aluno = 41 AND num_parcela = 99;
+WHERE fk_aluno = 41;
 
 -- Simulando erro
 ROLLBACK;
@@ -30,7 +30,7 @@ ROLLBACK;
 -- Depois
 SELECT COUNT(*) 
 FROM tb_mensalidades 
-WHERE fk_aluno = 41 AND num_parcela = 99;
+WHERE fk_aluno = 41;
 -- Resultado esperado: A tabela deve estar idêntica ao estado anterior
 
 -- ✔ Conclusão Cenário 1:

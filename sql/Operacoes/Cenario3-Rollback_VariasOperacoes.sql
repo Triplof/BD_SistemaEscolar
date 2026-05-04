@@ -1,6 +1,6 @@
 USE gestao_escolar;
 
---  CENÁRIO 3 (DIFERENCIAL): Transação com múltiplas operações
+--  CENÁRIO 3: Transação com múltiplas operações
 --  Simula um caso real: pagamento de mensalidade + registro
 --  no fluxo de caixa + atualização de status.
 --  Um erro no meio desfaz TUDO (Atomicidade total).
@@ -32,8 +32,7 @@ START TRANSACTION;
          'Entrada', 9999.00, NOW(), 0.00);
          -- saldo_momento seria calculado dinamicamente em produção
 
-    --  Simulação de erro: suponha que neste ponto o sistema
-    --  detecta que o contrato está rescindido. O correto é ROLLBACK de TUDO. 
+    --  Simulação de erro:o sistema detecta que o contrato está rescindido. O correto é ROLLBACK de TUDO. 
 
 	SELECT status_pagamento, valor_liquido
 		FROM tb_mensalidades
@@ -56,7 +55,7 @@ SELECT COUNT(*) AS entradas_caixa_depois
 FROM tb_fluxo_caixa
 WHERE fk_unidade = 1 AND DATE(data_movimento) = CURDATE();
 
--- ✔ Conclusão Cenário 3 (Diferencial):
+--   Conclusão Cenário 3:
 --   As duas operações (UPDATE + INSERT) foram desfeitas juntas.
 --   Nem a mensalidade teve seu status alterado,
 --   nem o fluxo de caixa registrou a entrada.

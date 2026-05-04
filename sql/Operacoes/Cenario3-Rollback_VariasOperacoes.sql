@@ -6,6 +6,10 @@ USE gestao_escolar;
 --  Um erro no meio desfaz TUDO (Atomicidade total).
 
 -- Verificação do estado ANTES
+UPDATE tb_mensalidades
+SET status_pagamento = 'Pendente'
+WHERE pk_mensalidade = 1;
+
 SELECT status_pagamento, valor_liquido
 FROM tb_mensalidades
 WHERE pk_mensalidade = 1;
@@ -19,8 +23,7 @@ START TRANSACTION;
     -- Operação 1: Marcar mensalidade como paga
     UPDATE tb_mensalidades
     SET status_pagamento = 'Pago'
-    WHERE pk_mensalidade = 1
-      AND status_pagamento IN ('Pendente', 'Atrasado');
+    WHERE pk_mensalidade = 1 AND status_pagamento IN ('Pendente', 'Atrasado');
 
     -- Operação 2: Registrar a entrada no fluxo de caixa
     INSERT INTO tb_fluxo_caixa

@@ -51,7 +51,7 @@ SELECT COUNT(*) AS entradas_caixa_depois
 FROM tb_fluxo_caixa
 WHERE fk_unidade = 1 AND DATE(data_movimento) = CURDATE();
 
--- ✔ Conclusão Cenário 4:
+--   Conclusão Cenário 4:
 --   Ambas as operações foram persistidas com o COMMIT.
 --   A Durabilidade garante que o dado permanece mesmo após
 --   encerrar a sessão ou reiniciar o servidor.

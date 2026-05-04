@@ -32,6 +32,6 @@ FROM tb_mensalidades
 WHERE fk_aluno = 41;
 -- Resultado esperado: A tabela deve manter novo dado
 
--- ✔ Conclusão Cenário 2:
+--   Conclusão Cenário 2:
 --   O COMMIT confirmou e persistiu a operação.
 --   Mesmo após encerrar a sessão ou tentar dar ROLLBACK, o dado continuará gravado (Durabilidade).

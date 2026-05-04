@@ -32,9 +32,8 @@ START TRANSACTION;
          'Entrada', 9999.00, NOW(), 0.00);
          -- saldo_momento seria calculado dinamicamente em produção
 
-    -- *** Simulação de erro: suponha que neste ponto o sistema
-    --     detecta que o contrato está rescindido ou o aluno
-    --     não existe mais. O correto é ROLLBACK de TUDO. ***
+    --  Simulação de erro: suponha que neste ponto o sistema
+    --  detecta que o contrato está rescindido. O correto é ROLLBACK de TUDO. 
 
 	SELECT status_pagamento, valor_liquido
 		FROM tb_mensalidades

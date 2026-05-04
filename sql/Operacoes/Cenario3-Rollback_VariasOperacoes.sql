@@ -32,8 +32,7 @@ START TRANSACTION;
          'Entrada', 9999.00, NOW(), 0.00);
          -- saldo_momento seria calculado dinamicamente em produção
 
-    --  Simulação de erro:o sistema detecta que o contrato está rescindido. O correto é ROLLBACK de TUDO. 
-
+	-- Verificação do estado durante operação
 	SELECT status_pagamento, valor_liquido
 		FROM tb_mensalidades
 		WHERE pk_mensalidade = 3;
@@ -41,7 +40,8 @@ START TRANSACTION;
 		SELECT COUNT(*) AS entradas_caixa_antes
 		FROM tb_fluxo_caixa
 		WHERE fk_unidade = 1 AND DATE(data_movimento) = CURDATE();
-        
+
+     --  Simulação de erro:o sistema detecta que o contrato está rescindido. O correto é ROLLBACK de TUDO. 
 		ROLLBACK;
 
 -- Verificação APÓS o ROLLBACK

@@ -40,7 +40,7 @@ START TRANSACTION;
         
         COMMIT;
 
--- Verificação APÓS o ROLLBACK
+-- Verificação APÓS o COMMIT
 -- Resultado esperado: status_pagamento permanece 
 -- e um novo fluxo de caixa foi registrada
 SELECT status_pagamento, valor_liquido

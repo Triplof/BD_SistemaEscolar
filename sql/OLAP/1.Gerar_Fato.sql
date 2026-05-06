@@ -3,6 +3,7 @@
 
 -- Ordem de criação: dimensões primeiro (sem FKs entre si),
 -- tabela fato por último (referencia todas as dimensões).
+-- 1 linha = 1 mensalidade paga por aluno por data de vencimento
 
 
 CREATE TABLE dim_tempo (

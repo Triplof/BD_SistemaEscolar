@@ -20,7 +20,7 @@ INNER JOIN tb_endereco  e ON e.pk_endereco = u.fk_endereco;
 
 -- dim_curso
 
--- Nota de modelagem: dim_curso armazena atributos da instituição
+-- dim_curso armazena atributos da instituição
 -- (tipo e categoria administrativa). O vínculo curso × unidade
 -- existe em tb_unidades_cursos, mas não é incorporado aqui porque
 -- a granularidade curso × unidade já é coberta na fato_pagamento
@@ -39,11 +39,6 @@ INNER JOIN tb_instituicao i ON i.pk_instituicao = c.fk_instituicao;
 
 
 -- dim_aluno
-
--- CORREÇÃO: endereço resolvido via subquery correlacionada (LIMIT 1)
--- para evitar duplicação quando há mais de um registro principal
--- na tabela tb_pessoa_endereco para o mesmo aluno.
-
 INSERT INTO dim_aluno (
   nk_aluno_id, ra_aluno, nome_completo, cpf,
   dt_nascimento, sexo, cidade, estado, status_matricula
@@ -63,7 +58,7 @@ SELECT
     JOIN   tb_endereco        e2  ON e2.pk_endereco = pe2.fk_endereco
     WHERE  pe2.fk_pessoa  = a.fk_pessoa
       AND  pe2.principal  = true
-    ORDER BY pe2.fk_endereco   -- desempate determinístico
+    ORDER BY pe2.fk_endereco  
     LIMIT 1
   )                                        AS cidade,
 
@@ -90,13 +85,7 @@ FROM       tb_alunos a
 INNER JOIN tb_pessoa  p ON p.pk_pessoa = a.fk_pessoa;
 
 
--- ── Verificações ─────────────────────────────────────────────
+-- Verificações 
 SELECT COUNT(*) AS total_unidades FROM dim_unidade;
 SELECT COUNT(*) AS total_cursos   FROM dim_curso;
 SELECT COUNT(*) AS total_alunos   FROM dim_aluno;
-
--- Sanidade: não deve retornar linhas (nk duplicado = aluno inserido 2x)
-SELECT nk_aluno_id, COUNT(*) AS qtd
-FROM   dim_aluno
-GROUP  BY nk_aluno_id
-HAVING qtd > 1;

@@ -1,19 +1,17 @@
--- ============================================================
--- SEED IDEMPOTENTE - Sistema de Gestão Escolar
+-- SEED - Sistema de Gestão Escolar
 -- Estratégia: INSERT IGNORE  (tabelas com PK auto ou composta)
---             ON DUPLICATE KEY UPDATE (tabelas onde atualizar faz sentido)
+-- ON DUPLICATE KEY UPDATE (tabelas onde atualizar faz sentido)
 -- Resultado esperado: COUNT(*) IGUAL antes e depois da reexecução
--- ============================================================
+
 
 USE gestao_escolar;
 SET FOREIGN_KEY_CHECKS = 0;
 SET SQL_MODE = 'NO_AUTO_VALUE_ON_ZERO';
 
--- ============================================================
+
 -- VALIDAÇÃO ANTES DA CARGA
 -- Execute este bloco, anote os valores, depois execute a carga
 -- e rode novamente: os números devem ser idênticos.
--- ============================================================
 
 SELECT 'ANTES DA CARGA' AS momento,
        (SELECT COUNT(*) FROM tb_endereco)              AS tb_endereco,

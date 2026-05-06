@@ -1,8 +1,7 @@
 -- 4_Carga_Fato.sql  —  Carga da fato_pagamento
 
-
-
-
+-- Impede tabela de duplicar se rodar novamente
+TRUNCATE TABLE fato_pagamento;
 
 SELECT
   COUNT(*)                       AS mensalidades_sem_contrato,
@@ -26,7 +25,7 @@ GROUP BY m.pk_mensalidade
 HAVING qtd_cursos > 1;
 
 
--- ── Carga principal 
+-- Carga principal 
 -- O curso é resolvido via subquery correlacionada a partir do
 -- contrato → matrícula → turma, com LIMIT 1 para proteger
 -- contra eventuais duplicações residuais no OLTP.

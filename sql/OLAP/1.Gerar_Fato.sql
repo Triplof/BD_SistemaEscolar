@@ -1,3 +1,4 @@
+
 -- Criação do modelo dimensional (Star Schema)
 
 -- Ordem de criação: dimensões primeiro (sem FKs entre si),
@@ -29,7 +30,13 @@ CREATE TABLE dim_aluno (
   sexo             VARCHAR(20),
   cidade           VARCHAR(50),
   estado           CHAR(2),
-  status_matricula VARCHAR(20)
+  status_matricula VARCHAR(20),
+  -- [SCD Tipo 2] Colunas de vigência: cidade, estado e status_matricula podem mudar.
+  -- Cada mudança gera nova linha com nova SK. dt_fim NULL = vigente.
+  dt_inicio        DATE    NOT NULL,
+  dt_fim           DATE,
+  eh_corrente      BOOLEAN NOT NULL DEFAULT TRUE,
+  UNIQUE (nk_aluno_id, dt_inicio)
 );
 
 CREATE TABLE dim_unidade (

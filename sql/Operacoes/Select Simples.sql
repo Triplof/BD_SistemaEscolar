@@ -84,7 +84,7 @@ ORDER BY fp.valor_liquido DESC;
 
 
 
--- 2.1 Alunos que pagaram mais de R$ 5.000 em mensalidades
+-- 2.1 Alunos que pagaram mais de R$ 2500 em mensalidades
 
 SELECT
     CONCAT(p.nome, ' ', p.sobrenome) AS aluno,
@@ -95,7 +95,7 @@ WHERE p.pk_pessoa IN (
     FROM tb_mensalidades m
     WHERE m.status_pagamento = 'Pago'
     GROUP BY m.fk_aluno
-    HAVING SUM(m.valor_liquido) > 5000
+    HAVING SUM(m.valor_liquido) > 2500
 );
 
 

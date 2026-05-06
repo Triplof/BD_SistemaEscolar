@@ -1,5 +1,4 @@
-
--- 1_Gerar_Fato.sql  —  Criação do modelo dimensional (Star Schema)
+-- Criação do modelo dimensional (Star Schema)
 
 -- Ordem de criação: dimensões primeiro (sem FKs entre si),
 -- tabela fato por último (referencia todas as dimensões).

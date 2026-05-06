@@ -1,5 +1,11 @@
 -- 3_Carga_OLAP.sql  —  Carga das dimensões (dim_unidade, dim_curso, dim_aluno)
 
+SET FOREIGN_KEY_CHECKS = 0;   
+TRUNCATE TABLE dim_unidade;
+TRUNCATE TABLE dim_curso;
+TRUNCATE TABLE dim_aluno;
+SET FOREIGN_KEY_CHECKS = 1;
+
 
 -- dim_unidade
 
@@ -21,19 +27,20 @@ INNER JOIN tb_endereco  e ON e.pk_endereco = u.fk_endereco;
 -- dim_curso
 
 -- dim_curso armazena atributos da instituição
--- (tipo e categoria administrativa). O vínculo curso × unidade
+-- (tipo e categoria administrativa). O vínculo curso x unidade
 -- existe em tb_unidades_cursos, mas não é incorporado aqui porque
--- a granularidade curso × unidade já é coberta na fato_pagamento
+-- a granularidade curso x unidade já é coberta na fato_pagamento
 -- pela combinação de sk_curso + sk_unidade.
 
 INSERT INTO dim_curso (
-  nk_curso_id, nome_curso, tipo_instituicao, categoria_adm
+  nk_curso_id, nome_curso, tipo_instituicao, categoria_adm, dt_inicio
 )
 SELECT
   c.pk_curso,
   c.nome_curso,
   i.tipo_instituicao,
-  i.tipo_categoria_adm
+  i.tipo_categoria_adm,
+  c.dt_inicio          -- ajuste o nome da coluna conforme sua tb_cursos
 FROM       tb_cursos     c
 INNER JOIN tb_instituicao i ON i.pk_instituicao = c.fk_instituicao;
 

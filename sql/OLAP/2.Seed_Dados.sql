@@ -1,9 +1,8 @@
 
 -- 2_Seed_Dados.sql  —  Carga da dim_tempo (2020–2030)
 
+SET SESSION cte_max_recursion_depth = 10000;
 -- Gera uma linha por dia usando CTE recursiva.
-
-
 INSERT INTO dim_tempo (
   data_completa, dia, mes, nome_mes,
   trimestre, semestre, ano, dia_semana, eh_fim_semana

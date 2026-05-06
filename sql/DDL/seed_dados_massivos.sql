@@ -504,8 +504,7 @@ INSERT IGNORE INTO tb_cursos (pk_curso, fk_instituicao, nome_curso) VALUES
 (1,1,'Ensino Fundamental I'),(2,1,'Ensino Fundamental II'),(3,1,'Ensino Médio'),
 (4,2,'Ensino Fundamental II'),(5,2,'Ensino Médio'),
 (6,3,'Administração'),(7,3,'Ciências da Computação'),(8,3,'Pedagogia'),(9,3,'Direito'),
-(10,4,'Ensino Fundamental I'),(11,4,'Ensino Fundamental II');
-
+(10,3,'Ensino Fundamental I'),(11,3,'Ensino Fundamental II');
 
 -- ============================================================
 -- MÓDULO: DISCIPLINAS
@@ -552,7 +551,7 @@ ON DUPLICATE KEY UPDATE
 INSERT IGNORE INTO tb_unidades_cursos (fk_curso, fk_unidade, fk_coordenador, ativo) VALUES
 (1,1,8,true),(2,1,10,true),(3,1,8,true),(4,2,16,true),(5,2,14,true),
 (6,3,17,true),(7,3,25,true),(8,3,20,true),(9,3,17,true),
-(10,4,22,true),(11,4,22,true);
+(10,3,22,true),(11,3,22,true);
 
 
 -- ============================================================

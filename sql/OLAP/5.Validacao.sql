@@ -1,18 +1,20 @@
--- Comparação OLTP x OLAP
--- Os três valores devem ser iguais
+
+-- 5_Validacao.sql  —  Comparação OLTP × OLAP
 
 
--- Fonte: OLTP
-SELECT 'OLTP' AS origem, 
-  SUM(valor_bruto)             AS total_bruto,
-  SUM(valor_desconto_aplicado) AS total_desconto,
-  SUM(valor_liquido)           AS total_liquido
+
+SELECT 'OLTP' AS origem,
+  COUNT(*)                       AS qtd_registros,
+  SUM(valor_bruto)               AS total_bruto,
+  SUM(valor_desconto_aplicado)   AS total_desconto,
+  SUM(valor_liquido)             AS total_liquido
 FROM tb_mensalidades
 WHERE fk_contrato IS NOT NULL;
 
--- Destino: OLAP
+
 SELECT 'OLAP' AS origem,
-  SUM(valor_bruto)             AS total_bruto,
-  SUM(valor_desconto_aplicado) AS total_desconto,
-  SUM(valor_liquido)           AS total_liquido
+  COUNT(*)                       AS qtd_registros,
+  SUM(valor_bruto)               AS total_bruto,
+  SUM(valor_desconto_aplicado)   AS total_desconto,
+  SUM(valor_liquido)             AS total_liquido
 FROM fato_pagamento;

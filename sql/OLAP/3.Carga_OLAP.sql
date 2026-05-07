@@ -26,21 +26,14 @@ INNER JOIN tb_endereco  e ON e.pk_endereco = u.fk_endereco;
 
 -- dim_curso
 
--- dim_curso armazena atributos da instituição
--- (tipo e categoria administrativa). O vínculo curso x unidade
--- existe em tb_unidades_cursos, mas não é incorporado aqui porque
--- a granularidade curso x unidade já é coberta na fato_pagamento
--- pela combinação de sk_curso + sk_unidade.
-
 INSERT INTO dim_curso (
-  nk_curso_id, nome_curso, tipo_instituicao, categoria_adm, dt_inicio
+  nk_curso_id, nome_curso, tipo_instituicao, categoria_adm
 )
 SELECT
   c.pk_curso,
   c.nome_curso,
   i.tipo_instituicao,
-  i.tipo_categoria_adm,
-  c.dt_inicio          -- ajuste o nome da coluna conforme sua tb_cursos
+  i.tipo_categoria_adm
 FROM       tb_cursos     c
 INNER JOIN tb_instituicao i ON i.pk_instituicao = c.fk_instituicao;
 
@@ -48,7 +41,8 @@ INNER JOIN tb_instituicao i ON i.pk_instituicao = c.fk_instituicao;
 -- dim_aluno
 INSERT INTO dim_aluno (
   nk_aluno_id, ra_aluno, nome_completo, cpf,
-  dt_nascimento, sexo, cidade, estado, status_matricula
+  dt_nascimento, sexo, cidade, estado, status_matricula,
+  dt_inicio
 )
 SELECT
   a.fk_pessoa                              AS nk_aluno_id,
@@ -86,7 +80,9 @@ SELECT
     WHERE  m.fk_pessoa = a.fk_pessoa
     ORDER BY m.data_matricula DESC
     LIMIT 1
-  )                                        AS status_matricula
+  )                                        AS status_matricula,
+
+  CURDATE()                                AS dt_inicio   
 
 FROM       tb_alunos a
 INNER JOIN tb_pessoa  p ON p.pk_pessoa = a.fk_pessoa;

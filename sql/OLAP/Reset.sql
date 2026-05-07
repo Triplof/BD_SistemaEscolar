@@ -1,3 +1,5 @@
+-- Reset.sql — Limpa e recarrega todas as dimensões OLAP
+
 -- 1. Limpa tudo
 SET FOREIGN_KEY_CHECKS = 0;
 TRUNCATE TABLE fato_pagamento;
@@ -13,22 +15,34 @@ FROM tb_unidades u
 JOIN tb_endereco e ON e.pk_endereco = u.fk_endereco;
 
 -- 3. Recarrega dim_curso
+-- CORREÇÃO: dt_inicio removido (tb_cursos não possui essa coluna)
 INSERT INTO dim_curso (nk_curso_id, nome_curso, tipo_instituicao, categoria_adm)
 SELECT c.pk_curso, c.nome_curso, i.tipo_instituicao, i.tipo_categoria_adm
 FROM tb_cursos c
 JOIN tb_instituicao i ON i.pk_instituicao = c.fk_instituicao;
 
 -- 4. Recarrega dim_aluno
+-- CORREÇÃO: adicionado dt_inicio (NOT NULL) com valor CURDATE()
 INSERT INTO dim_aluno (
   nk_aluno_id, ra_aluno, nome_completo, cpf,
-  dt_nascimento, sexo, cidade, estado, status_matricula
+  dt_nascimento, sexo, cidade, estado, status_matricula,
+  dt_inicio
 )
 SELECT
-  a.fk_pessoa, a.ra_aluno, CONCAT(p.nome, ' ', p.sobrenome),
-  p.cpf, p.dt_nascimento, p.sexo, e.cidade, e.estado,
-  (SELECT m.situacao FROM tb_matriculas m
-   WHERE m.fk_pessoa = a.fk_pessoa
-   ORDER BY m.data_matricula DESC LIMIT 1)
+  a.fk_pessoa,
+  a.ra_aluno,
+  CONCAT(p.nome, ' ', p.sobrenome),
+  p.cpf,
+  p.dt_nascimento,
+  p.sexo,
+  e.cidade,
+  e.estado,
+  (
+    SELECT m.situacao FROM tb_matriculas m
+    WHERE m.fk_pessoa = a.fk_pessoa
+    ORDER BY m.data_matricula DESC LIMIT 1
+  ),
+  CURDATE()   -- CORREÇÃO: campo NOT NULL preenchido
 FROM tb_alunos a
 JOIN tb_pessoa p ON p.pk_pessoa = a.fk_pessoa
 LEFT JOIN tb_pessoa_endereco pe ON pe.fk_pessoa = a.fk_pessoa AND pe.principal = true

@@ -2,7 +2,6 @@
 -- 5_Validacao.sql  —  Comparação OLTP × OLAP
 
 
-
 SELECT 'OLTP' AS origem,
   COUNT(*)                       AS qtd_registros,
   SUM(valor_bruto)               AS total_bruto,

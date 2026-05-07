@@ -51,12 +51,12 @@ CREATE TABLE dim_unidade (
 
 CREATE TABLE dim_curso (
   sk_curso         INT AUTO_INCREMENT PRIMARY KEY,
-  nk_curso_id      INT         NOT NULL,   -- = tb_cursos.pk_curso
+  nk_curso_id      INT         NOT NULL,
   nome_curso       VARCHAR(50),
   tipo_instituicao VARCHAR(30),
-  categoria_adm    VARCHAR(30)
+  categoria_adm    VARCHAR(30),
+  dt_inicio        DATE
 );
-
 
 
 -- FATO

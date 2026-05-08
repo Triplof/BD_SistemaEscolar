@@ -403,15 +403,6 @@ tb_funcionarios ── tb_folha_pagamento ── tb_eventos_folha
 
 ---
 
-## 🛠 Tecnologias
-
-![MySQL](https://img.shields.io/badge/MySQL-8.0+-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
-![SQL](https://img.shields.io/badge/SQL-DDL%20%2B%20DML%20%2B%20ETL-orange?style=for-the-badge)
-![Data Warehouse](https://img.shields.io/badge/Data%20Warehouse-Star%20Schema-blueviolet?style=for-the-badge)
-![SCD](https://img.shields.io/badge/SCD-Tipo%202-green?style=for-the-badge)
-
----
-
 ## 📄 Licença
 
 Projeto acadêmico. Sinta-se livre para usar, adaptar e estudar.

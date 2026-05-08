@@ -4,7 +4,7 @@
 -- Gera uma linha por dia usando CTE recursiva.
 SET SESSION cte_max_recursion_depth = 10000;
 
-
+-- se for mariaDB faz SET max_recursive_iterations = 10000;
 INSERT INTO dim_tempo (
   data_completa, dia, mes, nome_mes,
   trimestre, semestre, ano, dia_semana, eh_fim_semana

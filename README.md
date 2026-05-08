@@ -1,4 +1,4 @@
-# 🏫 Sistema de Gestão Escolar — Banco de Dados + Data Warehouse
+# 🏫 Sistema de Gestão Escolar — Banco de Dados
 
 > Modelo relacional completo para gestão de instituições de ensino — com camada analítica OLAP (Star Schema) para relatórios de faturamento. Do cadastro de alunos ao fluxo de caixa, passando por RH, folha de pagamento, controle acadêmico e BI.
 

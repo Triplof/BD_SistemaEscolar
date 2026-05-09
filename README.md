@@ -268,7 +268,7 @@ FROM fato_pagamento;
 
 ## 🚀 Como Usar
 
-### É possivel utilizar o "run_all.sql" diretamente no terminal para realizar toda criação do DDL e OLAP ou pode ser realizado manualmente seguindo esses passos:
+### É possivel utilizar o "run_all.sql" diretamente no terminal com 'mysql -u root -p < install.sql' para realizar toda criação do DDL e OLAP ou pode ser realizado manualmente seguindo esses passos:
 
 ### Parte 1 — OLTP (Banco Operacional)
 

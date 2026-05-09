@@ -15,7 +15,7 @@
 - [Como Usar](#-como-usar)
 - [Índices e Otimização](#-índices-e-otimização)
 - [Diagrama Simplificado](#-diagrama-simplificado)
-
+- [Diagrama de Entidade e Relacionamento](https://dbdiagram.io/d/Sistema_Academico-69fd3d5254a51d93d3c67726)
 ---
 
 ## 🎯 Visão Geral

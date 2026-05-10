@@ -24,6 +24,9 @@ FROM tb_mensalidades
 WHERE fk_aluno = 41;
 
 COMMIT;
+
+-- Rollback para provar que após o comit a operação vai manter 
+
 ROLLBACK;
 
 -- Depois

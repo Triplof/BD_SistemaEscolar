@@ -1,5 +1,5 @@
 -- Script unificado de instalação do projeto
--- Execute a partir da raiz: mysql -u root -p < install.sql
+-- Execute a partir da raiz: mysql -u root -p < run_all.sql
 
 
 -- FASE 1: DDL - Estrutura e Dados

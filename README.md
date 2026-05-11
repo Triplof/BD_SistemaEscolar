@@ -274,22 +274,22 @@ FROM fato_pagamento;
 
 **1. Criar o banco e as tabelas**
 ```sql
-SOURCE sistema_gestao_escolar.sql;
+Execute o sistema_gestao_escolar.sql;
 ```
 
 **2. Popular com dados de teste**
 ```sql
-SOURCE seed_dados_massivos.sql;
+Execute o seed_dados_massivos.sql;
 ```
 
 **3. Aplicar índices de performance**
 ```sql
-SOURCE Indices_Explain.sql;
+Execute o Indices_Explain.sql;
 ```
 
 **4. Resetar o banco (quando necessário)**
 ```sql
-SOURCE Reset_BD.sql;
+Execute o Reset_BD.sql;
 ```
 
 ---
@@ -300,41 +300,41 @@ SOURCE Reset_BD.sql;
 
 **1. Criar o Star Schema**
 ```sql
-SOURCE 1_Gerar_Fato.sql;
+Execute o 1_Gerar_Fato.sql;
 ```
 
 **2. Popular dim_tempo (2020–2030)**
 ```sql
-SOURCE 2_Seed_Dados.sql;
+Executeno 2_Seed_Dados.sql;
 -- Resultado esperado: 4018 linhas
 ```
 
 **3. Carregar as dimensões (ETL)**
 ```sql
-SOURCE 3_Carga_OLAP.sql;
+Execute o 3_Carga_OLAP.sql;
 -- Valida: total_unidades, total_cursos, total_alunos
 ```
 
 **4. Carregar a tabela fato (ETL)**
 ```sql
-SOURCE 4_Carga_Fato.sql;
+Execute o 4_Carga_Fato.sql;
 -- Valida: total_linhas_fato e linhas_sem_curso (deve ser 0)
 ```
 
 **5. Validar integridade OLTP × OLAP**
 ```sql
-SOURCE 5_Validacao.sql;
+Execute o 5_Validacao.sql;
 -- Totais devem ser idênticos entre as duas origens
 ```
 
 **6. Executar consultas analíticas**
 ```sql
-SOURCE 6_Consulta_Analitica.sql;
+Execute o 6_Consulta_Analitica.sql;
 ```
 
 **Resetar o DW (quando necessário)**
 ```sql
-SOURCE Reset.sql;
+Execute o Reset.sql;
 ```
 
 ---
